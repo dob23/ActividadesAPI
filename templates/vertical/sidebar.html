@@ -1,0 +1,539 @@
+<!-- {% load static %} -->
+<!-- <script src="{% static 'js/list.js' %}"></script> -->
+<aside class="main-sidebar sidebar-light-primary elevation-4" style="overflow-y: auto;">
+    <a href="#" class="brand-link">
+        <img src="{% static 'img/layoutlogo.png' %}" alt="AdminLTE Logo" width="150" style="margin-top: 5px;">
+        <span class="brand-text font-weight-light">
+            <img src="{% static 'img/emcaliletras.png' %}" width="180" style="margin-left: -155px;">
+        </span>
+    </a>
+
+    <div class="sidebar" style="overflow-y: auto;">
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="{% static 'img/user.jpg' %}" class="img-circle elevation-2" alt="Avatar Image">
+            </div>
+            <div class="info">
+                <a href="#" class="d-block">{{ request.user.first_name }}</a>
+            </div>
+        </div>
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa-solid fa-chart-line"></i>
+                        <p>
+                            Dashboard
+                            <i class="nav-icon right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{% url 'apli:dashboard' %}" class="nav-link">
+                                <i class="nav-icon far fa-clipboard"></i>
+                                <p>
+                                    Ordenes Cerradas
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'apli:dashboard_products' %}" class="nav-link">
+                                <i class="nav-icon  fas fa-chart-pie"></i>
+                                <p>
+                                    Productos
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'apli:dashboard_products_sales' %}" class="nav-link">
+                                <i class="nav-icon  far fa-chart-bar"></i>
+                                <p>
+                                    Ventas
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'apli:dashboard_installer_sales' %}" class="nav-link">
+                                <i class="nav-icon  far fa-chart-bar"></i>
+                                <p>
+                                    Instalaciones
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'infrastructure:dashboard_coverage' %}" class="nav-link">
+                                <i class="nav-icon  far fa-solid fa-map"></i>
+                                <p>
+                                    Mapa Cobertura
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {% comment %} MODULO DE DISPOSTIVOS {% endcomment %}
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-dolly-flatbed"></i>
+                        <p>
+                            Bodega
+                            <i class="nav-icon right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{% url 'apli:bodega_list' %}" class="nav-link">
+                                <i class="nav-icon far fa-list-alt"></i>
+                                <p>
+                                    ONTs, STBs
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-microchip"></i>
+                                <p>
+                                    Dispositivos
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{% url 'warehouse:brands_list' %}" class="nav-link">
+                                        <i class="nav-icon fa fa-plug"></i>
+                                        <p>Marcas</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'warehouse:models_list' %}" class="nav-link">
+                                        <i class="nav-icon fa fa-tag"></i>
+                                        <p>Modelos</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'warehouse:devices_list'%}" class="nav-link">
+                                        <i class="nav-icon fa fa-barcode"></i>
+                                        <p>Dispositivo</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'warehouse:transfer_list'%}" class="nav-link">
+                                        <i class="nav-icon fa fa-paper-plane"></i>
+                                        <p>Transferencias</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-cogs"></i>
+                                <p>
+                                    Materiales
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{% url 'apli:olts' %}" class="nav-link">
+                        <i class="nav-icon fa-solid fa-server"></i>
+                        <p>
+                            Diagnóstico
+                        </p>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-hard-hat"></i>
+                        <p>
+                            Instalaciones
+                            <i class="nav-icon right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{% url 'apli:orden_list' %}" class="nav-link">
+                                <i class="nav-icon far fa-list-alt"></i>
+                                <p>
+                                    Activas
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'apli:list_closed_ot' %}" class="nav-link">
+                                <i class="nav-icon  fas fa-list-alt"></i>
+                                <p>
+                                    Cerradas
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-tools"></i>
+                        <p>
+                            Reparaciones
+                            <i class="nav-icon right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{% url 'apli:reparaciones_list' %}" class="nav-link">
+                                <i class="nav-icon far fa-list-alt"></i>
+                                <p>
+                                    Activas
+                                </p>
+                            </a>
+                        </li>  
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{% url 'apli:buscar_ot_reparador' %}" class="nav-link">
+                                <i class="nav-icon fas fa-user-cog"></i>
+                                <p>
+                                    Por Reparador
+                                </p>
+                            </a>
+                        </li>  
+                    </ul>
+                </li>
+                <!--GARANTIAS-->
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon  fas fa-toolbox"></i>
+                        <p>
+                            Garantias
+                            <i class="nav-icon right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{% url 'apli:garantia_list' idCola='284' %}" class="nav-link">
+                                <i class="nav-icon  fa fa-wrench"></i>
+                                <p>
+                                    PROING VIR
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'apli:garantia_list' idCola='292' %}" class="nav-link">
+                                <i class="nav-icon  fa fa-wrench"></i>
+                                <p>
+                                    PROING 160K
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'apli:garantia_list' idCola='291' %}" class="nav-link">
+                                <i class="nav-icon  fa fa-wrench"></i>
+                                <p>
+                                    SPECTRA 160K
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'apli:garantia_list' idCola='290' %}" class="nav-link">
+                                <i class="nav-icon  fa fa-wrench"></i>
+                                <p>
+                                    UT TELCO 160K
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!--FINAL GARANTIAS-->
+                <li class="nav-item">
+                    <a href="{% url 'apli:used_materiales' %}" class="nav-link">
+                        <i class="nav-icon fa-solid fa-boxes-stacked"></i>
+                        <p>
+                            Materiales Usados
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-chart-line"></i>
+                        <p>
+                            Estadísticas
+                            <i class="nav-icon right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{% url 'apli:reportes_enc' %}" class="nav-link">
+                                <i class="nav-icon  fas fa-chart-pie"></i>
+                                <p>
+                                    Encuestas
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'apli:monitoreo' %}" class="nav-link">
+                        <i class="nav-icon fa-solid fa-clipboard-list"></i>
+                        <p>
+                            Monitoreo
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'apli:monitoreo_corporativo' %}" class="nav-link">
+                        <i class="nav-icon fas fa-eye"></i>
+                        <p>
+                            Monitoreo corporativos
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'apli:monitoreo_odn' %}" class="nav-link">
+                        <i class="nav-icon fa-solid fa-network-wired"></i>
+                        <p>
+                            Monitoreo ODN
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa-solid fa-folder-tree"></i>
+                        <p>
+                            Reportes
+                            <i class="nav-icon right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-hard-hat"></i>
+                                <p>
+                                    Instalaciones
+                                    <i class="nav-icon right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{% url 'apli:report_installers_list' area='all' %}" class="nav-link">
+                                        <i class="nav-icon fa-solid fa-circle-user"></i>
+                                        <p>
+                                            General
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'apli:report_installers_list' area='emcali' %}" class="nav-link">
+                                        <i class="nav-icon fa-solid fa-circle-user"></i>
+                                        <p>
+                                            Emcali
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'apli:report_installers_list' area='vir' %}" class="nav-link">
+                                        <i class="nav-icon fa-solid fa-circle-user"></i>
+                                        <p>
+                                            VIR
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'apli:report_installers_list' area='proing160k' %}" class="nav-link">
+                                        <i class="nav-icon fa-solid fa-circle-user"></i>
+                                        <p>
+                                            PROING 160K
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'apli:report_installers_list' area='spectra160k' %}" class="nav-link">
+                                        <i class="nav-icon fa-solid fa-circle-user"></i>
+                                        <p>
+                                            SPECTRA 160K
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{% url 'apli:report_installers_list' area='uttelco160k' %}" class="nav-link">
+                                        <i class="nav-icon fa-solid fa-circle-user"></i>
+                                        <p>
+                                            UTTELCO 160K
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa-solid fa-search"></i>
+                        <p>
+                            Consultas
+                            <i class="nav-icon right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{% url 'apli:disponibilidad_ftth' %}" class="nav-link">
+                                <i class="nav-icon fa-solid fa-map-location-dot"></i>
+                                <p>
+                                    Ver cobertura
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'apli:consulta_infraestructura_ftth' %}" class="nav-link">
+                                <i class="nav-icon fa-solid fa-network-wired"></i>
+                                <p>
+                                    Infraestructura FTTH
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                {% if 'Supervisor' ==  request.user.groups.all.0.name or 'Administrador' ==  request.user.groups.all.0.name %}
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fa-solid fa-hand-holding-dollar"></i>
+                            <p>
+                                Liquidación
+                                <i class="nav-icon right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{% url 'apli:liquidation_contracts' contratos='vir' %}" class="nav-link">
+                                    <i class="nav-icon fa-solid fa-circle-user"></i>
+                                    <p>
+                                        VIR
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'apli:liquidation_contracts' contratos='spectra160k' %}" class="nav-link">
+                                    <i class="nav-icon fa-solid fa-circle-user"></i>
+                                    <p>
+                                        SPECTRA 160K
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'apli:liquidation_contracts' contratos='proing160k' %}" class="nav-link">
+                                    <i class="nav-icon fa-solid fa-circle-user"></i>
+                                    <p>
+                                        PROING 160K
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'apli:liquidation_contracts' contratos='uttelco160k' %}" class="nav-link">
+                                    <i class="nav-icon fa-solid fa-circle-user"></i>
+                                    <p>
+                                        UTTELCO 160K
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                {% endif %}
+                <!--MAPAS-->
+                {% comment %} <li class="nav-item">
+                    <a href="{% url 'infrastructure:maps' %}" class="nav-link">
+                        <i class="nav-icon fa-solid fa-map"></i>
+                        <p>
+                            Mapas
+                        </p>
+                    </a>
+                </li> {% endcomment %}
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa-solid fa-map"></i>
+                        <p>
+                            Mapas
+                            <i class="nav-icon right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{% url 'infrastructure:maps' %}" class="nav-link">
+                                <i class="nav-icon fa fa-map-marker"></i>
+                                <p>
+                                    Proyectos
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'infrastructure:project_coverage' %}" class="nav-link">
+                                <i class="nav-icon  fa fa-location-arrow"></i>
+                                <p>
+                                    Coberturas FTTH
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa-solid fa-handshake-angle"></i>
+                        <p>
+                            Convenios
+                            <i class="nav-icon right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{% url 'apli:corporativos' convenio='40ZONAS-WIFI' %}" class="nav-link">
+                                <i class="nav-icon fa fa-wifi"></i>
+                                <p>
+                                    Zonas Wifi
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'apli:corporativos' convenio='SEM-CALI' %}" class="nav-link">
+                                <i class="nav-icon fa fa-book"></i>
+                                <p>
+                                    SED
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'apli:corporativos' convenio='FENOGE' %}" class="nav-link">
+                                <i class="nav-icon fa fa-bolt"></i>
+                                <p>
+                                    EN-FENOGE
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'apli:corporativos' convenio='AMI' %}" class="nav-link">
+                                <i class="nav-icon fa fa-bolt"></i>
+                                <p>
+                                    EN-AMI
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'apli:corporativos' convenio='RECONECTADORES' %}" class="nav-link">
+                                <i class="nav-icon fa fa-bolt"></i>
+                                <p>
+                                    EN-RECONECTADORES
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'apli:corporativos' convenio='FRONTERAS' %}" class="nav-link">
+                                <i class="nav-icon fa fa-bolt"></i>
+                                <p>
+                                    EN-FRONTERAS
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</aside>

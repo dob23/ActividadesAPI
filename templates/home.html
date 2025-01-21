@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <!--  Forzar que no se lea la cache -->
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Last-Modified" content="0">
+  <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <title> {{ title }}</title>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="{% static 'lib/fontawesome-6.3.0/css/all.css' %}">
+  <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+  <link rel="stylesheet" href="{% static 'lib/adminlte-3.2.0/plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'lib/adminlte-3.2.0/css/adminlte.min.css' %}">
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- jQuery -->
+  <script src="{% static 'lib/adminlte-3.2.0/plugins/jquery/jquery.min.js' %}"></script>
+  <!-- Bootstrap 4 -->
+  <script src="{% static 'lib/adminlte-3.2.0/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <!-- AdminLTE App -->
+  <script src="{% static 'lib/adminlte-3.2.0/js/adminlte.min.js' %}"></script>
+  <!-- JQUERY CONFIRM -->
+  <link rel="stylesheet" href="{% static 'lib/jquery-confirm-v3.3.4/jquery-confirm.min.css' %}">
+  <script src="{% static 'lib/jquery-confirm-v3.3.4/jquery-confirm.min.js' %}"></script>
+  <!-- My styles css -->
+  <link rel="stylesheet" href="{% static 'css/mystyles.css' %}">
+  <!-- sweetalert -->
+  <script src="{% static 'lib/sweetalert2-9.10.0/sweetalert2.all.min.js' %}"></script>
+  <!-- Functions -->
+  <script src="{% static 'js/functions.js' %}"></script>
+  <link href="{% static 'lib/select2-4.0.13/css/select2.min.css' %}" rel="stylesheet" />
+  <link href="{% static 'lib/select2-4.0.13/css/select2-bootstrap4.min.css' %}" rel="stylesheet" />
+  <script src="{% static 'lib/select2-4.0.13/js/select2.min.js' %}"></script>
+  <!-- DataTables Libraries -->
+  <link rel="stylesheet" href="{% static 'lib/datatables-1.10.20/css/dataTables.bootstrap4.min.css' %}" />
+  <link rel="stylesheet"
+    href="{% static 'lib/datatables-1.10.20/plugins/responsive-2.2.3/css/responsive.bootstrap4.min.css' %}" />
+  <script src="{% static 'lib/datatables-1.10.20/js/jquery.dataTables.js' %}"></script>
+  <script src="{% static 'lib/datatables-1.10.20/js/dataTables.bootstrap4.min.js' %}"></script>
+  <script src="{% static 'lib/datatables-1.10.20/plugins/responsive-2.2.3/js/dataTables.responsive.min.js' %}"></script>
+  <script src="{% static 'lib/datatables-1.10.20/plugins/responsive-2.2.3/js/responsive.bootstrap4.min.js' %}"></script>
+
+  <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script> -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+  {% block head %}
+
+  {% endblock %}
+
+</head>
+{% block body %}
+
+{% endblock %}
+
+</html>
