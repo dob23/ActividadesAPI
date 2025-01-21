@@ -1,0 +1,89 @@
+#map {
+  height: 100%;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family:Arial, Helvetica, sans-serif
+}
+
+.swal2-popup {
+  font-size: 8pt !important;
+}
+#layers_container {
+  display: none;
+}
+#layers_footer {
+  text-align: center;
+}
+
+#project_selector_div {
+  position: absolute;
+  border: 1px solid #000000;
+  background: #ffffff;
+  box-shadow: 5px 5px 3px 0px rgba(97, 97, 97, 0.5);
+  font-size: 9pt;
+  margin-top: 20px;
+  margin-left: 15px;
+  display: none;
+  z-index: 10;
+  
+}
+
+.input_select2 {
+  width: 180px;
+}
+
+.DraggableDiv {
+  position: absolute;
+  top: 20%;
+  left: 15px;
+  border: 1px solid #000000;
+  background: #ffffff;
+  box-shadow: 5px 5px 3px 0px rgba(97, 97, 97, 0.5);
+  font-size: 9pt;
+  z-index: 2;
+}
+
+.DraggableDiv div {
+  padding: 5px;
+}
+
+.DraggableDiv .Header {
+  cursor: move;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: center;
+  background-color: #2196f3;
+  padding: 10px;
+}
+
+#title {
+  color: #fff;
+  background-color: #4d90fe;
+  font-size: 25px;
+  font-weight: 500;
+  padding: 6px 12px;
+}
+
+.select2FontSize {
+  font-size: 9pt;
+}
+
+#ruler_div {
+  /* position: absolute; */
+  padding: 5px 5px 5px 5px;
+  margin-right: 10px;
+  border: 1px solid #000000;
+  background: #ffffff;
+  box-shadow: 5px 5px 3px 0px rgba(97, 97, 97, 0.5);
+  font-size: 9pt;
+  margin-top: 20px;
+  margin-left: 15px;
+  display: none;
+  z-index: 10;
+  cursor: pointer;
+}
