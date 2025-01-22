@@ -126,3 +126,6 @@ AUTHENTICATION_BACKENDS = [
     'path.to.SimpleJWTAuthBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
+
+LOGIN_REDIRECT_URL = 'actividades:Task_list'
+LOGOUT_REDIRECT_URL = 'login_up'

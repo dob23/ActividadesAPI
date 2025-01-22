@@ -1,0 +1,17 @@
+
+**/__pycache__/*.pyc
+*.sqlite3
+**/db.py
+**/urls_WS.py
+#interno
+.vscode/
+env/
+.venv/
+### Django ###
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
