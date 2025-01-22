@@ -1,14 +1,8 @@
-from django.http import HttpResponseRedirect
-from django.shortcuts import redirect, render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.contrib.auth.views import LoginView
-from django.utils.decorators import method_decorator
-from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import RedirectView, View
-from django.contrib.auth import logout, authenticate, login
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import Group
-from rest_framework_simplejwt.tokens import RefreshToken
+from django.views.generic import View
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, logout
 from django.contrib import messages
 
 class UserLoginView(View):
@@ -16,46 +10,38 @@ class UserLoginView(View):
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            return redirect(reverse_lazy('actvidades:Task_list'))
-        return render(request, self.template_name, {"title": "Login"})
-    
-    @method_decorator(csrf_exempt)
-    def post(self, request, *args,**kwargs):
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+            return redirect(reverse_lazy('actividades:Task_list'))
+        
+        form = AuthenticationForm()
+        # Añadir clases y atributos manualmente
+        form.fields['username'].widget.attrs.update({
+            'class': 'form-control',
+            'placeholder': 'Usuario',
+            'autocomplete': 'off'
+        })
+        form.fields['password'].widget.attrs.update({
+            'class': 'form-control',
+            'placeholder': 'Contraseña',
+            'autocomplete': 'off'
+        })
+        return render(request, self.template_name, {"title": "Login", "form": form})
 
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            refresh = RefreshToken.for_user(user)
-            tokens = {
-                "access": str(refresh.access_token),
-                "refresh": str(refresh)
-            }
-            messages.success(request, "Inicio de sesion exitoso")
+    def post(self, request, *args, **kwargs):
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            login(request, form.get_user())
+            messages.success(request, "Inicio de sesión exitoso")
             return redirect(reverse_lazy('actividades:Task_list'))
         else:
-            return render(request, self.template_name,{
-                "error": "Credenciales Incorrectas",
+            return render(request, self.template_name, {
                 "title": "Login",
+                "form": form,
+                "error": "Credenciales incorrectas. Intenta de nuevo."
             })
 
-class LogoutRedirectView(RedirectView):
-    pattern_name = 'login'
 
-    def dispatch(self, request, *args, **kwargs):
-        logout(request)
-        messages.info(request, "Has Cerrado sesion correctamente")
-        return super().dispatch(request, *args, **kwargs)
-    
-class UserChangeGroup(LoginRequiredMixin, View):
+class LogoutRedirectView(View):
     def get(self, request, *args, **kwargs):
-        try:
-            group = Group.objects.get(pk=self.kwargs['pk'])
-            request.user.groups.clear()
-            request.user.groups.add(group)
-            request.session['group'] = group 
-            messages.success(request, f"grupo cambiado a {group.name}")
-        except Group.DoesNotExist:
-            messages.error(request,"El grupo no existe")
-        return HttpResponseRedirect(reverse_lazy('actividades:Task_list')) 
+        logout(request)
+        messages.info(request, "Has cerrado sesión correctamente.")
+        return redirect(reverse_lazy('user:login'))

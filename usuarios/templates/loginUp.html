@@ -27,20 +27,23 @@
     <!-- Jquery Confirm -->
     <link rel="stylesheet" href="{% static 'lib/jquery-confirm-v3.3.4/jquery-confirm.min.css' %}">
     <script src="{% static 'lib/jquery-confirm-v3.3.4/jquery-confirm.min.js' %}"></script>
+    <!-- Custom JS -->
+    <script src="{% static 'js/login.js' %}"></script>
 </head>
 <body class="hold-transition login-page">
     {% comment %} optimizar codigo se hizo rapido para entregar rapido att juan david {% endcomment %}
     <div class="login-box">
         <div class="login-logo">
-            <a href="#"><img src="{% static 'img/layoutset.png' %}" alt="" width="320"></a>
+            <a href="#"><img src="{% static '' %}" alt="" width="320"></a>
         </div>
         <div class="card">
             <div class="card-body login-card-body">
-                <p class="login-box-msg">Portal de instalaciones de EMCALI</p>
+                <p class="login-box-msg">Portal</p>
 
                 <!----------- INICIO DE FORMULARIO ------------>
                 <form action="." method="post">
                     {% csrf_token %}
+                    <input type="hidden" id="formErrors" value="{% for field in form %}{% for error in field.errors %}{{ error }}\n{% endfor %}{% endfor %}{% for error in form.non_field_errors %}{{ error }}\n{% endfor %}">
                     <div class="input-group mb-3">
 
                         <!-- DIGITAR USER -->
@@ -56,7 +59,7 @@
                         <!-- DIGITAR CONTRASEÑA -->
                         {{ form.password|add_class:'form-control'|attr:'autocomplete:off'|attr:'placeholder:Ingrese su contraseña' }}
                         <div class="input-group-append">
-                            <div class="input-group-text" onclick="mostrarContrasena()">
+                            <div class="input-group-text">
                                 <span class="icon fa fa-eye-slash"></span>
                             </div>
                         </div>
@@ -68,43 +71,11 @@
                             <button type="submit" class="btn btn-dark btn-block">
                                 <i class="fas fa-sign-in-alt"></i>&nbsp; Iniciar sesión
                             </button>
-                                </a>
-                            </p>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
-        <script type="application/javascript">
-            {% if form.errors %}
-                var errors = '';
-                {% for field in form %}
-                    {% for error in field.errors %}
-                        errors += '{{ error }}\n';
-                    {% endfor %}
-                {% endfor %}
-                {% for error in form.non_field_errors %}
-                    errors += '{{ error }}\n';
-                {% endfor %}
-                Swal.fire({
-                    title: 'Error!',
-                    text: errors,
-                    icon: 'error'
-                });
-            {% endif %}
-
-            // FUNCION PARA MOSTRAR/OCULTAR CONTRASEÑA
-            function mostrarContrasena(){
-                var tipo = document.getElementById("id_password");
-                if(tipo.type == "password"){
-                    tipo.type = "text";
-                    $('.icon').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
-                }else{
-                    tipo.type = "password";
-                    $('.icon').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
-                }
-            }
-        </script>
     </div>
 </body>
 </html>
