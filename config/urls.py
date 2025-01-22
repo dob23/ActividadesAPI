@@ -18,5 +18,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('usuarios/', include('usuarios.urls')), # Ruta para las actividades
+    path('usuarios/', include('usuarios.urls')), 
+    path('actividades/', include('actividades.urls')),
 ]
